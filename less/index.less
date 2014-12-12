@@ -1,0 +1,71 @@
+@import 'mixins.less';
+
+body,
+html {
+  height: 100%
+}
+
+.scroller {
+  font-size: 0;
+  height: 100%;
+  margin: auto;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  width: 100%;
+}
+
+.bkg {
+  background-position: center bottom;
+  background-size: cover;
+}
+
+.parallax-slide {
+  overflow: hidden;
+  position: relative;
+
+  & > div {
+    position: relative;
+    will-change: top;
+  }
+}
+
+.spacer {
+  .paper-shadow-z-1;
+  font-size: 13px;
+  min-height: 100px;
+  overflow: auto;
+  position: relative;
+  text-align: center;
+  z-index: 10;
+}
+
+#slide-1 {
+  height: 100vh;
+
+  & > div {
+    height: 100%;
+
+    & > .bkg {
+      background-position: 60% 60%;
+      height: 100%;
+      width: 100%;
+    }
+  }
+}
+
+#slide-2,
+#slide-3,
+#slide-4 {
+  height: (100vw * 2 / 3);
+  
+  & > div {
+    height: 150%;
+    top: -50%;
+
+    & > .bkg {
+      display: inline-block;
+      height: 50%;
+      width: 50%;
+    }
+  }
+}
