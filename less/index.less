@@ -15,8 +15,18 @@ html {
 }
 
 .bkg {
-  background-position: center bottom;
+  background-position: center center;
   background-size: cover;
+
+  &.top-left      { background-position: top    left;   }
+  &.top-center    { background-position: top    center; }
+  &.top-right     { background-position: top    right;  }
+  &.center-left   { background-position: center left;   }
+  &.center-center { background-position: center center; }
+  &.center-right  { background-position: center right;  }
+  &.bottom-left   { background-position: bottom left;   }
+  &.bottom-center { background-position: bottom center; }
+  &.bottom-right  { background-position: bottom right;  }
 }
 
 .parallax-slide {
@@ -46,7 +56,7 @@ html {
     height: 100%;
 
     & > .bkg {
-      background-position: 60% 60%;
+      background-position: 60% 65%;
       height: 100%;
       width: 100%;
     }
