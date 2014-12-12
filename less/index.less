@@ -17,6 +17,8 @@ html {
 .bkg {
   background-position: center center;
   background-size: cover;
+  height: 100%;
+  width: 100%;
 
   &.top-left      { background-position: top    left;   }
   &.top-center    { background-position: top    center; }
@@ -64,18 +66,29 @@ html {
 }
 
 #slide-2,
-#slide-3,
-#slide-4 {
-  height: (100vw * 2 / 3);
+#slide-4,
+#slide-5 {
+  @overflow-ratio: 2;
+  height: 100vw;
+  max-height: 100vh;
   
   & > div {
-    height: 150%;
-    top: -50%;
+    height: 100% * @overflow-ratio;
+    top: (1 - @overflow-ratio) * 100%;
 
     & > .bkg {
       display: inline-block;
       height: 50%;
       width: 50%;
     }
+  }
+}
+
+#slide-3 {
+  height: 80vh;
+  
+  & > div {
+    height: 200%;
+    top: -100%;
   }
 }
