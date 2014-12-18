@@ -1,20 +1,24 @@
 @import 'mixins.less';
+@import 'paper-shadow.less';
+@import 'parallax.less';
 
 body,
 html {
   height: 100%
 }
 
-.scroller {
-  font-size: 0;
-  height: 100%;
-  margin: auto;
-  overflow-x: hidden;
-  overflow-y: scroll;
-  width: 100%;
+.debugger {
+  position: fixed;
+  top: 0;
+  left: .5em;
+  z-index: 999;
+  background: rgba(0,0,0,.85);
+  color: #fff;
+  padding: .5em;
+  border-radius: 0 0 5px 5px;
 }
 
-.bkg {
+.background {
   background-position: center center;
   background-size: cover;
   height: 100%;
@@ -31,64 +35,35 @@ html {
   &.bottom-right  { background-position: bottom right;  }
 }
 
-.parallax-slide {
-  overflow: hidden;
-  position: relative;
-
-  & > div {
-    position: relative;
-    will-change: top;
-  }
-}
-
-.spacer {
-  .paper-shadow-z-1;
-  font-size: 13px;
-  min-height: 100px;
-  overflow: auto;
-  position: relative;
-  text-align: center;
-  z-index: 10;
-}
-
-#slide-1 {
+#s1,
+#s3,
+#s5,
+#s7,
+#s9 {
   height: 100vh;
 
-  & > div {
+  & > .background {
     height: 100%;
-
-    & > .bkg {
-      background-position: 60% 65%;
-      height: 100%;
-      width: 100%;
-    }
+    width: 100%;
   }
 }
 
-#slide-2,
-#slide-4,
-#slide-5 {
-  @overflow-ratio: 2;
-  height: 100vw;
-  max-height: 100vh;
-  
-  & > div {
-    height: 100% * @overflow-ratio;
-    top: (1 - @overflow-ratio) * 100%;
-
-    & > .bkg {
-      display: inline-block;
-      height: 50%;
-      width: 50%;
-    }
-  }
+#s1 > .background {
+  background-position: 60% 65%;
 }
 
-#slide-3 {
-  height: 80vh;
-  
-  & > div {
-    height: 200%;
-    top: -100%;
+#s3 > .background {
+  background-position: 50% 30%;
+}
+
+#s2,
+#s4,
+#s6,
+#s8 {
+  height: 500px;
+
+  & > .spacer {
+    .paper-shadow.z-1();
+    background: #fff;
   }
 }

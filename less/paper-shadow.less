@@ -1,0 +1,41 @@
+@import 'mixins.less';
+
+.paper-shadow(@top-opacity, @top-top, @top-right, @top-bottom, @top-left,
+              @bottom-opacity, @bottom-top, @bottom-right, @bottom-bottom, @bottom-left) {
+  .transition(box-shadow @fast);
+  box-shadow: rgba(0, 0, 0, @top-opacity) @top-top @top-right @top-bottom @top-left;
+
+  &::after {
+    box-shadow: rgba(0, 0, 0, @bottom-opacity) @bottom-top @bottom-right @bottom-bottom @bottom-left;
+    content: '';
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+}
+
+.paper-shadow.z-0 {
+  .paper-shadow(0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+}
+
+.paper-shadow.z-1 {
+  .paper-shadow(0.258824, 0px, 2px, 5px, 0px, 0.156863, 0px, 2px, 10px, 0px);
+}
+
+.paper-shadow.z-2 {
+  .paper-shadow(0.2, 0px, 8px, px, 0px, 0.188235, 0px, 6px, 20px, 0px);
+}
+
+.paper-shadow.z-3 {
+  .paper-shadow(0.239216, 0px, 12px, 15px, 0px, 0.188235, 0px, 17px, 50px, 0px);
+}
+
+.paper-shadow.z-4 {
+  .paper-shadow(0.219608, 0px, 16px, 28px, 0px, 0.207843, 0px, 25px, 55px, 0px);
+}
+
+.paper-shadow.z-5 {
+  .paper-shadow(0.2, 0px, 27px, 24px, 0px, 0.219608, 0px, 40px, 77px, 0px);
+}

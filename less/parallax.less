@@ -1,0 +1,64 @@
+@import 'mixins.less';
+
+// I've adapted this technique specifically for LESS from:
+//     http://keithclark.co.uk/articles/pure-css-parallax-websites/
+
+@perspective: 300px;
+@layers: 10;
+
+.parallax {
+  .perspective(@perspective);
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+// Groups
+
+.group {
+  .transform-style(preserve-3d);
+  @transition: @fast, opacity @fast;
+  .transition-transform(@transition);
+  height: 100%;
+  position: relative;
+
+  .debug & {
+    .transform(translate3d(700px, 0, -800px) rotateY(30deg));
+  }
+}
+
+.generate-groups(@n, @i: 0) when (@i =< @n) {
+  .group.z-@{i} {
+    z-index: @n - @i;
+  }
+
+  .generate-groups(@n, (@i + 1));
+}
+.generate-groups(@layers);
+
+// Layers
+
+.layer {
+  @transition: box-shadow @fast, opacity @fast;
+  .transition(@transition);
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+
+  .debug & {
+    box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.6);
+    opacity: .8;
+  }
+}
+
+.generate-layers(@n, @i: 0) when (@i =< @n) {
+  .layer.z-@{i} {
+    @translateZ: -2 * @perspective * @i / @n;
+    .transform(translateZ(@translateZ) scale(1 + (@translateZ * -1) / @perspective));
+  }
+
+  .generate-layers(@n, (@i + 1));
+}
+.generate-layers(@layers);
