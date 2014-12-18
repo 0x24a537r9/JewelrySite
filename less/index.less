@@ -8,14 +8,14 @@ html {
 }
 
 .debugger {
+  background: rgba(0,0,0,.85);
+  border-radius: 0 0 5px 5px;
+  color: #fff;
+  left: .5em;
+  padding: .5em;
   position: fixed;
   top: 0;
-  left: .5em;
   z-index: 999;
-  background: rgba(0,0,0,.85);
-  color: #fff;
-  padding: .5em;
-  border-radius: 0 0 5px 5px;
 }
 
 .background {
@@ -56,14 +56,65 @@ html {
   background-position: 50% 30%;
 }
 
+#s4 > .columns {
+  box-sizing: border-box;
+  padding: 0 20px;
+  position: relative;
+  width: 100%;
+
+  .thumbnail {
+    .paper-shadow.z-3();
+    background: #fefefe;
+    line-height: 0;
+    padding: 10px;
+  }
+}
+
 #s2,
-#s4,
 #s6,
 #s8 {
-  height: 500px;
+  height: auto;
+  min-height: 500px;
+  padding: 10px;
+  box-sizing: border-box;
 
   & > .spacer {
     .paper-shadow.z-1();
     background: #fff;
+  }
+}
+
+.columns {
+  .column-count(3);
+  .column-fill(auto);
+  .column-gap(0);
+
+  & > div {
+    .column-break-inside(avoid);
+    display: inline-block;
+    margin: 0 10px 20px 10px;
+    position: relative;
+
+    img {
+      width: 100%;
+    }
+  }
+}
+
+@media (max-width: 650px) {
+  .columns {
+    .column-count(2);
+  }
+}
+
+@media (min-width: 960px) {
+  .columns {
+    .column-count(4);
+  }
+}
+
+@media (min-width: 1300px) {
+  .columns {
+    .column-count(5);
   }
 }

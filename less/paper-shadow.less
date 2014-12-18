@@ -2,7 +2,7 @@
 
 .paper-shadow(@top-opacity, @top-top, @top-right, @top-bottom, @top-left,
               @bottom-opacity, @bottom-top, @bottom-right, @bottom-bottom, @bottom-left) {
-  .transition(box-shadow @fast);
+  .transition(box-shadow @fast @swing);
   box-shadow: rgba(0, 0, 0, @top-opacity) @top-top @top-right @top-bottom @top-left;
 
   &::after {
