@@ -53,20 +53,34 @@ html {
 }
 
 #s3 > .background {
+  .paper-shadow.z-3();
   background-position: 50% 30%;
 }
 
-#s4 > .columns {
-  box-sizing: border-box;
-  padding: 0 20px;
-  position: relative;
-  width: 100%;
+#s4-background {
+  height: 0;
 
-  .thumbnail {
-    .paper-shadow.z-2();
-    background: #fefefe;
-    line-height: 0;
-    padding: 10px;
+  & > .background {
+    height: 200vh;
+    top: 600px;
+  }
+}
+
+#s4 {
+  height: auto;
+
+  & > .columns {
+    box-sizing: border-box;
+    padding: 300px 20px 100px 20px;
+    position: relative;
+    width: 100%;
+
+    .thumbnail {
+      .paper-shadow.z-2();
+      background: #fefefe;
+      line-height: 0;
+      padding: 10px;
+    }
   }
 }
 
