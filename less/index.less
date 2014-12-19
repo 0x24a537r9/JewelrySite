@@ -3,17 +3,19 @@
 @import 'parallax.less';
 @import url(http://fonts.googleapis.com/css?family=Ruthie|Amatic+SC:400,700|Loved+by+the+King|Sacramento);
 
-body,
-html {
+body, html {
   height: 100%;
   font-family: 'Loved by the King';
   font-size: 20px;
 }
 
-h1,
-h2 {
+h1, h2 {
   font-family: 'Amatic SC';
+  margin: 0;
 }
+
+h1 { font-size: 50px; }
+h2 { font-size: 30px; }
 
 .debugger {
   background: rgba(0, 0, 0, .85);
@@ -52,16 +54,11 @@ h2 {
   top: 0;
   width: 100%;
 
-  h1,
-  h2 {
+  h1, h2 {
     color: #fff;
-    margin: 0;
     position: absolute;
     text-shadow: 1px 1px 5px rgba(0, 0, 0, .8);
   }
-
-  h1 { font-size: 50px; }
-  h2 { font-size: 30px; }
 }
 
 .banner {
@@ -72,89 +69,8 @@ h2 {
     background: #fff;
     line-height: 1.5;
     min-height: 400px;
-    padding: 40px 50px;
+    padding: 40px 60px;
     position: relative;
-  }
-}
-
-#s1,
-#s3,
-#s5,
-#s7,
-#s9 {
-  height: 100vh;
-
-  & .background {
-    height: 100%;
-    width: 100%;
-  }
-}
-
-#s1 {
-  .background {
-    background-position: 60% 65%;
-  }
-
-  .captions {
-    h2 {
-      right: 25px;
-      bottom: 10px;
-    }
-  }
-}
-
-#s2 {
-  .layer {
-    .paper-shadow.z-2();
-  }
-}
-
-#s3 {
-  height: 80vh;
-
-  .background {
-    .paper-shadow.z-3();
-    background-position: 50% 35%;
-  }
-
-  .captions {
-    h1 {
-      left: 40px;
-      top: 70px;
-    }
-  }
-}
-
-#s4-background {
-  height: 0;
-
-  & .background {
-    height: 200vh;
-    top: 600px;
-  }
-}
-
-#s4 {
-  height: auto;
-
-  & .columns {
-    box-sizing: border-box;
-    padding: 150px 20px 100px 20px;
-    position: relative;
-    width: 100%;
-
-    .thumbnail {
-      .paper-shadow.z-2();
-      background: #fefefe;
-      line-height: 0;
-      padding: 10px;
-    }
-  }
-}
-
-#s5 {
-  .layer {
-    .paper-shadow.z-3();
   }
 }
 
@@ -190,5 +106,77 @@ h2 {
 @media (min-width: 1300px) {
   .columns {
     .column-count(5);
+  }
+}
+
+#s1 {
+  height: 100vh;
+
+  .background {
+    background-position: 60% 65%;
+  }
+
+  .captions {
+    h2 {
+      right: 35px;
+      bottom: 20px;
+    }
+  }
+}
+
+#s2 {
+  .layer {
+    .paper-shadow.z-2();
+  }
+}
+
+#s3 {
+  height: 80vh;
+
+  .background {
+    .paper-shadow.z-3();
+    background-position: 50% 35%;
+  }
+
+  .captions {
+    h1 {
+      left: 40px;
+      top: 70px;
+    }
+  }
+}
+
+#s4 {
+  height: 0;
+
+  & .background {
+    height: 200vh;
+    top: 600px;
+  }
+}
+
+#s5 {
+  height: auto;
+
+  & .columns {
+    box-sizing: border-box;
+    padding: 150px 20px 100px 20px;
+    position: relative;
+    width: 100%;
+
+    .thumbnail {
+      .paper-shadow.z-2();
+      background: #fefefe;
+      line-height: 0;
+      padding: 10px;
+    }
+  }
+}
+
+#s6 {
+  height: 100vh;
+
+  .layer {
+    .paper-shadow.z-3();
   }
 }
