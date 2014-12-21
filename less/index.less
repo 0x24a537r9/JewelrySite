@@ -176,10 +176,10 @@ h2 { font-size: 30px; }
 
   .captions {
     h1 {
-      text-align: right;
+      bottom: 30px;
       left: 40px;
       right: 50px;
-      bottom: 30px;
+      text-align: right;
     }
   }
 }
@@ -194,9 +194,9 @@ h2 { font-size: 30px; }
 
   .captions {
     h1 {
+      bottom: 40px;
       left: 40px;
       right: 50px;
-      bottom: 40px;
     }
   }
 }
@@ -231,9 +231,68 @@ h2 { font-size: 30px; }
 
 #s8 {
   height: 100vh;
+  margin-bottom: -45vh;
+
 
   .layer {
-    .paper-shadow.z-3();
+    .paper-shadow.z-2();
     min-height: 400px;
+  }
+}
+
+#s9 {
+  height: 80vh;
+
+  .background {
+    .paper-shadow.z-1();
+    background-position: 50% 85%;
+  }
+
+  .captions {
+    h1 {
+      bottom: 50px;
+      font-size: 45px;
+      left: 30%;
+      right: 40px;
+      text-align: right;
+    }
+  }
+}
+
+#s10 {
+  height: 80vh;
+  margin: 100px 0;
+
+  .background {
+    .paper-shadow.z-1();
+    background-position: 40% 0%;
+  }
+
+  .captions {
+    h1 {
+      font-size: 45px;
+      left: 40%;
+      right: 60px;
+      text-align: right;
+      top: 30px;
+    }
+  }
+}
+
+#s11 {
+  height: 80vh;
+
+  .background {
+    .paper-shadow.z-1();
+    background-position: 50% 50%;
+  }
+
+  .captions {
+    h1 {
+      font-size: 45px;
+      left: 40px;
+      right: 40%;
+      top: 50px;
+    }
   }
 }
