@@ -65,6 +65,53 @@ button::-moz-focus-inner {
     position: absolute;
     right: 0;
     top: 0;
+
+    h1 {
+      .white-text();
+      position: absolute;
+
+      &.top {
+        left: 5vmin;
+        right: 5vmin;
+        text-align: left;
+        top: 5vmin;
+      }
+
+      &.top-left {
+        left: 5vmin;
+        right: 50%;
+        text-align: left;
+        top: 5vmin;
+      }
+
+      &.top-right {
+        left: 50%;
+        right: 5vmin;
+        text-align: right;
+        top: 5vmin;
+      }
+
+      &.bottom {
+        bottom: 5vmin;
+        left: 5vmin;
+        right: 5vmin;
+        text-align: left;
+      }
+
+      &.bottom-left {
+        bottom: 5vmin;
+        left: 5vmin;
+        right: 50%;
+        text-align: left;
+      }
+
+      &.bottom-right {
+        bottom: 5vmin;
+        left: 50%;
+        right: 5vmin;
+        text-align: right;
+      }
+    }
   }
 
   .close {
@@ -102,9 +149,8 @@ button::-moz-focus-inner {
   width: 100%;
 
   h1, h2 {
-    color: #fff;
+    .white-text();
     position: absolute;
-    text-shadow: 1px 1px 5px rgba(0, 0, 0, .8);
   }
 }
 
