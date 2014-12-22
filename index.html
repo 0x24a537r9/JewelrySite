@@ -17,7 +17,7 @@
     <div class="overlay">
       <div class="lightbox">
         <div class="background"></div>
-        <h2></h2>
+        <h1></h1>
       </div>
       <div class="close">X</div>
     </div>
@@ -167,6 +167,8 @@
       </section>
     </main>
     <script>
+      var FAST = 280;
+
       var lightboxImageAspectRatio = null;
 
 
@@ -194,9 +196,9 @@
           delete img;
 
           $('.lightbox .background').css('background-image', 'url(' + src + ')');
-          $('.lightbox h2').text(caption).attr('class', captionAlign);
+          $('.lightbox h1').text(caption).attr('class', captionAlign);
           resizeLightbox();
-          $('.overlay').fadeIn(280);
+          $('.overlay').fadeIn(FAST);
         }).error(function() {
           console.error('Image failed to load: ' + src);
         }).attr('src', src);
@@ -205,7 +207,7 @@
 
       function hideLightbox() {
         lightboxImageAspectRatio = null;
-        $('.overlay').fadeOut(280);
+        $('.overlay').fadeOut(FAST);
       }
 
 
