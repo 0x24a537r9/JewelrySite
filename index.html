@@ -14,6 +14,12 @@
     <div class="debugger">
       <label><input type="checkbox"> Debug</label>
     </div>
+    <div class="overlay">
+      <div class="lightbox">
+        <div class="background"></div>
+      </div>
+      <div class="close">X</div>
+    </div>
     <main class="parallax">
       <section id="s1" class="group z-2">
         <div class="background layer z-2" style="background-image: url(img/jewelry-18.jpg);"></div>
@@ -100,8 +106,73 @@
       </section>
     </main>
     <script>
-      $('.debugger input').click(function() {
-        $(document.body).toggleClass('debug', this.checked);
+      var lightboxImageAspectRatio = null;
+
+
+      function handleDocumentReady() {
+        $('.debugger input').click(function() {
+          $(document.body).toggleClass('debug', this.checked);
+        });
+
+        $('.thumbnail').click(function() {
+          showLightbox($(this).find('img')[0].src);
+        });
+
+        $('.overlay, .overlay .close').click(hideLightbox);
+
+        $(window).resize(resizeLightbox);
+      }
+
+
+      function showLightbox(src) {
+        var img = new Image();
+        $(img).load(function() {
+          lightboxImageAspectRatio = img.naturalWidth / img.naturalHeight;
+          delete img;
+
+          $('.lightbox .background').css('background-image', 'url(' + src + ')');
+          resizeLightbox();
+          $('.overlay').fadeIn(280);
+        }).error(function() {
+          console.error('Image failed to load: ' + src);
+        }).attr('src', src);
+      }
+
+
+      function hideLightbox() {
+        lightboxImageAspectRatio = null;
+        $('.overlay').fadeOut(280);
+      }
+
+
+      function resizeLightbox() {
+        if (!lightboxImageAspectRatio) {
+          return;
+        }
+
+        var $overlay = $('.overlay');
+        var availableWidth = $overlay.width();
+        var availableHeight = $overlay.height();
+        var availableAspectRatio = availableWidth / availableHeight;
+
+        if (lightboxImageAspectRatio >= availableAspectRatio) {
+          var lightboxWidth = availableWidth;
+          var lightboxHeight = availableWidth / lightboxImageAspectRatio;
+        } else {
+          var lightboxWidth = availableHeight * lightboxImageAspectRatio;
+          var lightboxHeight = availableHeight;
+        }
+
+        $('.lightbox').width(lightboxWidth).height(lightboxHeight);
+      }
+
+
+      $(document).ready(handleDocumentReady);
+
+
+      // DEBUG. DO NOT SUBMIT.
+      $(function() {
+        $('.parallax').scrollTop(3233);
       });
     </script>
   </body>

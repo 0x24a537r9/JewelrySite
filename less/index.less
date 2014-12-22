@@ -17,6 +17,18 @@ h1, h2 {
 h1 { font-size: 50px; }
 h2 { font-size: 30px; }
 
+a, button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+a:focus, button:focus {
+  outline: none;
+}
+
+button::-moz-focus-inner {
+  border: 0;
+}
+
 .debugger {
   background: rgba(0, 0, 0, .85);
   border-radius: 0 0 5px 5px;
@@ -28,6 +40,41 @@ h2 { font-size: 30px; }
   position: fixed;
   top: 0;
   z-index: 999;
+}
+
+.overlay {
+  background: rgba(0, 0, 0, 0.8);
+  cursor: pointer;
+  display: none;
+  height: 100%;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  padding: 10vmin;
+  box-sizing: border-box;
+
+  .lightbox {
+    .paper-shadow.z-2();
+    background: #fff;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    padding: 10px;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
+  .close {
+    color: #fff;
+    font-size: 24px;
+    font-weight: bold;
+    position: absolute;
+    right: 30px;
+    top: 20px;
+  }
 }
 
 .background {
