@@ -17,7 +17,7 @@
     <div class="overlay">
       <div class="lightbox">
         <div class="background"></div>
-        <h1></h1>
+        <h2></h2>
       </div>
       <div class="close">X</div>
     </div>
@@ -194,7 +194,7 @@
           delete img;
 
           $('.lightbox .background').css('background-image', 'url(' + src + ')');
-          $('.lightbox h1').text(caption).attr('class', captionAlign);
+          $('.lightbox h2').text(caption).attr('class', captionAlign);
           resizeLightbox();
           $('.overlay').fadeIn(280);
         }).error(function() {
