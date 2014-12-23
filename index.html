@@ -259,72 +259,7 @@
       }
 
 
-      function showLightbox(src, caption, captionAlign) {
-        var img = new Image();
-        $(img).load(function() {
-          lightboxImageAspectRatio = img.naturalWidth / img.naturalHeight;
-          delete img;
-
-          $('.lightbox .background').css('background-image', 'url(' + src + ')');
-          $('.lightbox h1').text(caption).attr('class', captionAlign);
-          resizeLightbox();
-          $('.overlay').fadeIn(FAST);
-        }).error(function() {
-          console.error('Image failed to load: ' + src);
-        }).attr('src', src);
-      }
-
-
-      function hideLightbox() {
-        lightboxImageAspectRatio = null;
-        $('.overlay').fadeOut(FAST);
-      }
-
-
-      function resizeLightbox() {
-        if (!lightboxImageAspectRatio) {
-          return;
-        }
-
-        var $overlay = $('.overlay');
-        var availableWidth = $overlay.width();
-        var availableHeight = $overlay.height();
-        var availableAspectRatio = availableWidth / availableHeight;
-
-        if (lightboxImageAspectRatio >= availableAspectRatio) {
-          var lightboxWidth = availableWidth;
-          var lightboxHeight = availableWidth / lightboxImageAspectRatio;
-        } else {
-          var lightboxWidth = availableHeight * lightboxImageAspectRatio;
-          var lightboxHeight = availableHeight;
-        }
-
-        $('.lightbox').width(lightboxWidth).height(lightboxHeight);
-      }
-
-
-      function handleLocationClick() {
-        map.setZoom(17);
-        if ($(this).hasClass('linne')) {
-          map.panTo(linneMarker.position);
-        } else {
-          map.panTo(roseBowlMarker.position);
-        }
-      }
-
-
-      function handleContactFormInput() {
-        var isValid = $('.name-field').val() && $('.email-field').val().indexOf('@') > 0 &&
-            $('.body-field').val();
-        $('.send-button').attr('disabled', isValid ? null : '');
-      }
-
-
-      $(document).ready(handleDocumentReady);
-
-
-      $(function() {
-        // TODO: Refactor this out to a named function.
+      function handleDocumentLoad() {
         // Theme taken from https://snazzymaps.com/style/54/routexl.
         var mapOptions = {
           center: new google.maps.LatLng(35.0216914, -169.24553775),
@@ -442,7 +377,72 @@
         mapBounds.extend(linneMarker.position);
         mapBounds.extend(roseBowlMarker.position);
         map.fitBounds(mapBounds);
-      });
+      }
+
+
+      function showLightbox(src, caption, captionAlign) {
+        var img = new Image();
+        $(img).load(function() {
+          lightboxImageAspectRatio = img.naturalWidth / img.naturalHeight;
+          delete img;
+
+          $('.lightbox .background').css('background-image', 'url(' + src + ')');
+          $('.lightbox h1').text(caption).attr('class', captionAlign);
+          resizeLightbox();
+          $('.overlay').fadeIn(FAST);
+        }).error(function() {
+          console.error('Image failed to load: ' + src);
+        }).attr('src', src);
+      }
+
+
+      function hideLightbox() {
+        lightboxImageAspectRatio = null;
+        $('.overlay').fadeOut(FAST);
+      }
+
+
+      function resizeLightbox() {
+        if (!lightboxImageAspectRatio) {
+          return;
+        }
+
+        var $overlay = $('.overlay');
+        var availableWidth = $overlay.width();
+        var availableHeight = $overlay.height();
+        var availableAspectRatio = availableWidth / availableHeight;
+
+        if (lightboxImageAspectRatio >= availableAspectRatio) {
+          var lightboxWidth = availableWidth;
+          var lightboxHeight = availableWidth / lightboxImageAspectRatio;
+        } else {
+          var lightboxWidth = availableHeight * lightboxImageAspectRatio;
+          var lightboxHeight = availableHeight;
+        }
+
+        $('.lightbox').width(lightboxWidth).height(lightboxHeight);
+      }
+
+
+      function handleLocationClick() {
+        map.setZoom(17);
+        if ($(this).hasClass('linne')) {
+          map.panTo(linneMarker.position);
+        } else {
+          map.panTo(roseBowlMarker.position);
+        }
+      }
+
+
+      function handleContactFormInput() {
+        var isValid = $('.name-field').val() && $('.email-field').val().indexOf('@') > 0 &&
+            $('.body-field').val();
+        $('.send-button').attr('disabled', isValid ? null : '');
+      }
+
+
+      $(document).ready(handleDocumentReady);
+      $(handleDocumentLoad);
     </script>
   </body>
 </html>
