@@ -7,6 +7,7 @@
               @bottom-h-shadow, @bottom-v-shadow, @bottom-blur, @bottom-spread, @bottom-opacity) {
   .transition(box-shadow @fast @swing);
   box-shadow: @top-h-shadow @top-v-shadow @top-blur @top-spread rgba(0, 0, 0, @top-opacity);
+  position: relative;
 
   &::after {
     .transition(box-shadow @fast @swing);
@@ -17,6 +18,7 @@
     position: absolute;
     top: 0;
     width: 100%;
+    z-index: -1;
   }
 }
 

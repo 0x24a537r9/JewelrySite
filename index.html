@@ -9,6 +9,7 @@
     <!-- Scripts -->
     <script src="js/jquery-2.1.1.min.js"></script>
     <script src="js/modernizr.custom.min.js"></script>
+    <script src="//maps.googleapis.com/maps/api/js"></script>
   </head>
   <body>
     <div class="debugger">
@@ -165,11 +166,40 @@
           <h1>Blue kunzanite + 20k gold</h1>
         </div>
       </section>
+      <section id="s12" class="banner group z-0">
+        <div class="layer z-0">
+          <h1>Locations</h1>
+          <div class="map-canvas"></div>
+          <div class="locations">
+            <div class="location linne">
+              <img src="img/linne.jpg"><br>
+              <b>Linne</b><br>
+              1474 Mimuro<br>
+              Midori-ku, Saitama-shi, Saitama-ken<br>
+              Japan<br>
+              <a href="http://linne-0.com/">http://linne-0.com/</a>
+            </div>
+            <div class="location rose-bowl">
+              <img src="img/rose-bowl.gif"><br>
+              <b>Rose Bowl Flea Market</b><br>
+              1001 Rose Bowl Drive<br>
+              Pasadena, CA 91103<br>
+              United States<br>
+              <a href="http://www.rosebowlstadium.com/events/flea-market">
+              http://rosebowlstadium.com</a>
+            </div>
+          </div>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ullamcorper nibh vel auctor aliquet. In viverra, magna at blandit sagittis, metus orci congue nibh, ac elementum orci erat non est. Donec eu scelerisque tortor. Phasellus maximus non mauris vel porta. Proin non libero vel turpis suscipit efficitur. Sed auctor neque nisi, eu tristique lorem viverra sed. Integer congue non ipsum nec commodo. Sed et nunc risus. Duis sollicitudin commodo odio, eget dictum magna bibendum et. In tortor dolor, blandit sit amet velit nec, pretium pulvinar turpis. Nulla dictum ante ex, vehicula malesuada diam ullamcorper et.</p>
+        </div>
+      </section>
     </main>
     <script>
       var FAST = 280;
 
       var lightboxImageAspectRatio = null;
+      var map = null;
+      var linneMarker = null;
+      var roseBowlMarker = null;
 
 
       function handleDocumentReady() {
@@ -186,6 +216,8 @@
         $('.overlay, .overlay .close').click(hideLightbox);
 
         $(window).resize(resizeLightbox);
+
+        $('.location').click(handleLocationClick);
       }
 
 
@@ -233,7 +265,138 @@
       }
 
 
+      function handleLocationClick() {
+        map.setZoom(17);
+        if ($(this).hasClass('linne')) {
+          map.panTo(linneMarker.position);
+        } else {
+          map.panTo(roseBowlMarker.position);
+        }
+      }
+
+
       $(document).ready(handleDocumentReady);
+
+
+      $(function() {
+        // Theme taken from https://snazzymaps.com/style/54/routexl.
+        var mapOptions = {
+          center: new google.maps.LatLng(35.0216914, -169.24553775),
+          zoom: 1,
+          mapTypeId: google.maps.MapTypeId.ROADMAP,
+          styles: [
+            {
+              'featureType': 'administrative',
+              'elementType': 'all',
+              'stylers': [
+                {'visibility': 'on'},
+                {'saturation': -100},
+                {'lightness': 20}
+              ]
+            }, {
+              'featureType': 'road',
+              'elementType': 'all',
+              'stylers': [
+                {'visibility': 'on'},
+                {'saturation': -100},
+                {'lightness': 40}
+              ]
+            }, {
+              'featureType': 'water',
+              'elementType': 'all',
+              'stylers': [
+                {'visibility': 'on'},
+                {'saturation': -10},
+                {'lightness': 30}
+              ]
+            }, {
+              'featureType': 'landscape.man_made',
+              'elementType': 'all',
+              'stylers': [
+                {'visibility': 'simplified'},
+                {'saturation': -60},
+                {'lightness': 10}
+              ]
+            }, {
+              'featureType': 'landscape.natural',
+              'elementType': 'all',
+              'stylers': [
+                {'visibility': 'simplified'},
+                {'saturation': -60},
+                {'lightness': 60}
+              ]
+            }, {
+              'featureType': 'poi',
+              'elementType': 'all',
+              'stylers': [
+                {'visibility': 'off'},
+                {'saturation': -100},
+                {'lightness': 60}
+              ]
+            },
+            {
+              'featureType': 'transit',
+              'elementType': 'all',
+              'stylers': [
+                {'visibility': 'off'},
+                {'saturation': -100},
+                {'lightness': 60}
+              ]
+            }
+          ]
+        };
+        map = new google.maps.Map($('.map-canvas')[0], mapOptions);
+
+        // Linne marker.
+        linneMarker = new google.maps.Marker({
+          position: new google.maps.LatLng(35.8820548, 139.6765705),
+          map: map,
+          title: 'Linne'
+        });
+        var linneInfoWindow = new google.maps.InfoWindow({
+          content:
+              '<div class="info-window linne">' +
+              '  <img src="img/linne.jpg"><br>' +
+              '  <b>Linne</b><br>' +
+              '  1474 Mimuro<br>' +
+              '  Midori-ku, Saitama-shi, Saitama-ken<br>' +
+              '  Japan<br>' +
+              '  <a href="http://linne-0.com/">http://linne-0.com/</a>' +
+              '</div>'
+        });
+        google.maps.event.addListener(linneMarker, 'click', function() {
+          roseBowlInfoWindow.close();
+          linneInfoWindow.open(map, linneMarker);
+        });
+
+        // Rose Bowl Flea Market marker.
+        roseBowlMarker = new google.maps.Marker({
+          position: new google.maps.LatLng(34.161328, -118.167646),
+          map: map,
+          title: 'Rose Bowl Stadium'
+        });
+        var roseBowlInfoWindow = new google.maps.InfoWindow({
+          content:
+              '<div class="info-window rose-bowl">' +
+              '  <img src="img/rose-bowl.gif"><br>' +
+              '  <b>Rose Bowl Flea Market</b><br>' +
+              '  1001 Rose Bowl Drive<br>' +
+              '  Pasadena, CA 91103<br>' +
+              '  <a href="http://www.rosebowlstadium.com/events/flea-market">' +
+              '  http://rosebowlstadium.com</a>' +
+              '</div>'
+        });
+        google.maps.event.addListener(roseBowlMarker, 'click', function() {
+          linneInfoWindow.close();
+          roseBowlInfoWindow.open(map, roseBowlMarker);
+        });
+
+        // Fit the bounds of the markers.
+        var mapBounds = new google.maps.LatLngBounds();
+        mapBounds.extend(linneMarker.position);
+        mapBounds.extend(roseBowlMarker.position);
+        map.fitBounds(mapBounds);
+      });
     </script>
   </body>
 </html>

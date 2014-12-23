@@ -21,6 +21,10 @@ a, button {
   -webkit-tap-highlight-color: transparent;
 }
 
+a {
+  color: #3c86c1;
+}
+
 a:focus, button:focus {
   outline: none;
 }
@@ -326,7 +330,6 @@ button::-moz-focus-inner {
 #s8 {
   height: auto;
 
-
   .layer {
     .paper-shadow.z-2();
     min-height: 400px;
@@ -386,6 +389,58 @@ button::-moz-focus-inner {
       font-size: 45px;
       left: 40px;
       right: 50px;
+    }
+  }
+}
+
+#s12 {
+  height: auto;
+
+  .layer {
+    .paper-shadow.z-2();
+    
+    .map-canvas {
+      height: 50vh;
+      background: #ccc;
+
+      .info-window {
+        margin: 10px 0;
+
+        &.linne {
+          min-width: 220px;
+        }
+
+        &.rose-bowl {
+          min-width: 180px;
+        }
+
+        img {
+          height: 31px;
+        }
+      }
+    }
+
+    .locations {
+      display: inline-block;
+      margin: 10px;
+      position: relative;
+      text-align: center;
+      width: 100%;
+
+      .location {
+        border: 3px solid #ddd;
+        color: #555;
+        cursor: pointer;
+        display: inline-block;
+        font-size: 16px;
+        margin: 0 5px 5px 0;
+        min-width: 210px;
+        padding: 15px;
+
+        img {
+          height: 31px;
+        }
+      }
     }
   }
 }
