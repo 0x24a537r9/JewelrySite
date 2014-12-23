@@ -220,6 +220,12 @@
         <div class="layer z-0">
           <h1>Contact</h1>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ullamcorper nibh vel auctor aliquet. In viverra, magna at blandit sagittis, metus orci congue nibh, ac elementum orci erat non est.</p>
+          <p class="contact-form">
+            <input class="name-field" type="text" placeholder="Your name"></input><br>
+            <input class="email-field" type="text" placeholder="Email address"></input><br>
+            <textarea class="body-field" placeholder="Questions, special requests, thoughts..."></textarea><br>
+            <button class="send-button" disabled>SEND</button>
+          </p>
         </div>
       </section>
     </main>
@@ -248,6 +254,8 @@
         $(window).resize(resizeLightbox);
 
         $('.location').click(handleLocationClick);
+
+        $('.contact-form input, .contact-form textarea').on('input', handleContactFormInput);
       }
 
 
@@ -305,10 +313,18 @@
       }
 
 
+      function handleContactFormInput() {
+        var isValid = $('.name-field').val() && $('.email-field').val().indexOf('@') > 0 &&
+            $('.body-field').val();
+        $('.send-button').attr('disabled', isValid ? null : '');
+      }
+
+
       $(document).ready(handleDocumentReady);
 
 
       $(function() {
+        // TODO: Refactor this out to a named function.
         // Theme taken from https://snazzymaps.com/style/54/routexl.
         var mapOptions = {
           center: new google.maps.LatLng(35.0216914, -169.24553775),

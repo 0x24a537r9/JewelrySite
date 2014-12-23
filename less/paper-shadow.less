@@ -6,12 +6,12 @@
 .paper-shadow(@top-h-shadow, @top-v-shadow, @top-blur, @top-spread, @top-opacity,
               @bottom-h-shadow, @bottom-v-shadow, @bottom-blur, @bottom-spread, @bottom-opacity) {
   .transition(box-shadow @fast @swing);
-  box-shadow: @top-h-shadow @top-v-shadow @top-blur @top-spread rgba(0, 0, 0, @top-opacity);
+  box-shadow: @bottom-h-shadow @bottom-v-shadow @bottom-blur @bottom-spread rgba(0, 0, 0, @bottom-opacity);
   position: relative;
 
   &::after {
     .transition(box-shadow @fast @swing);
-    box-shadow: @bottom-h-shadow @bottom-v-shadow @bottom-blur @bottom-spread rgba(0, 0, 0, @bottom-opacity);
+    box-shadow: @top-h-shadow @top-v-shadow @top-blur @top-spread rgba(0, 0, 0, @top-opacity);
     content: '';
     height: 100%;
     left: 0;

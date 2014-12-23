@@ -514,6 +514,7 @@ button::-moz-focus-inner {
 
   .captions {
     h1 {
+      // TODO: Refactor these styles out to a mixin or something.
       border: 3px solid #fff;
       box-shadow: 1px 1px 5px rgba(0, 0, 0, .8), inset 1px 1px 5px rgba(0, 0, 0, .8);
       left: 50%;
@@ -529,5 +530,47 @@ button::-moz-focus-inner {
 
   .layer {
     .paper-shadow.z-2();
+
+    .contact-form {
+      font-family: 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
+
+      .name-field, .email-field, .body-field, .send-button {
+        .paper-shadow.z-1();
+        border: none;
+        box-sizing: border-box;
+        margin-bottom: 15px;
+        padding: 10px;
+        width: 100%;
+      }
+
+      .name-field {
+        max-width: 350px;
+      }
+
+      .email-field {
+        max-width: 500px;
+      }
+
+      .body-field {
+        height: 250px;
+      }
+
+      .send-button {
+        @transition: border-color @fast @swing, color @fast @swing;
+        .transition(@transition);
+        background: transparent;
+        border: 3px solid #000;
+        box-shadow: none;
+        font-family: 'Amatic SC';
+        font-size: 32px;
+        font-weight: bold;
+        padding: 10px 0;
+
+        &[disabled] {
+          border-color: #bbb;
+          color: #bbb;
+        }
+      }
+    }
   }
 }
