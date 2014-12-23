@@ -280,6 +280,15 @@
         $('.contact-form input, .contact-form textarea').on('input', handleContactFormInput);
 
         $('.send-button').click(handleSendClick);
+
+        // Try to prevent horizontal scrolling.
+        $('.parallax').scroll(function() {
+          $('.parallax').scrollLeft(0);
+        });
+
+        $(window).on('touchstart touchmove touchend touchcancel', function() {
+          $('.parallax').scrollLeft(0);
+        });
       }
 
 
