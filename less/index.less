@@ -1,7 +1,7 @@
 @import 'mixins.less';
 @import 'paper-shadow.less';
 @import 'parallax.less';
-@import url(http://fonts.googleapis.com/css?family=Ruthie|Amatic+SC:400,700|Loved+by+the+King|Sacramento);
+@import url(//fonts.googleapis.com/css?family=Ruthie|Amatic+SC:400,700|Loved+by+the+King|Sacramento);
 
 body, html {
   height: 100%;
@@ -126,6 +126,24 @@ button::-moz-focus-inner {
     position: absolute;
     right: 30px;
     top: 20px;
+  }
+}
+
+.error {
+  .paper-shadow.z-2();
+  .transform(translate(-50%, -50%));
+  background: #fff;
+  display: none;
+  left: 50%;
+  top: 50%;
+  padding: 10px;
+  position: fixed;
+  z-index: 100;
+
+  h1 {
+    border: 3px solid #000;
+    font-size: 7vmin;
+    padding: 30px 40px;
   }
 }
 
@@ -292,12 +310,12 @@ button::-moz-focus-inner {
 
   .captions {
     h1 {
+      .transform(translate(-50%, -50%));
       border: 3px solid #fff;
       box-shadow: 1px 1px 5px rgba(0, 0, 0, .8), inset 1px 1px 5px rgba(0, 0, 0, .8);
       left: 50%;
       padding: 20px 40px;
       top: 50%;
-      transform: translate(-50%,-50%);
     }
   }
 }
@@ -406,12 +424,12 @@ button::-moz-focus-inner {
 
   .captions {
     h1 {
+      .transform(translate(-50%, -50%));
       border: 3px solid #fff;
       box-shadow: 1px 1px 5px rgba(0, 0, 0, .8), inset 1px 1px 5px rgba(0, 0, 0, .8);
       left: 50%;
       padding: 20px 40px;
       top: 50%;
-      transform: translate(-50%,-50%);
     }
   }
 }
@@ -515,12 +533,12 @@ button::-moz-focus-inner {
   .captions {
     h1 {
       // TODO: Refactor these styles out to a mixin or something.
+      .transform(translate(-50%, -50%));
       border: 3px solid #fff;
       box-shadow: 1px 1px 5px rgba(0, 0, 0, .8), inset 1px 1px 5px rgba(0, 0, 0, .8);
       left: 50%;
       padding: 20px 40px;
       top: 50%;
-      transform: translate(-50%,-50%);
     }
   }
 }
@@ -541,6 +559,11 @@ button::-moz-focus-inner {
         margin-bottom: 15px;
         padding: 10px;
         width: 100%;
+
+        &[disabled] {
+          background: #fff;
+          color: #bbb;
+        }
       }
 
       .name-field {
