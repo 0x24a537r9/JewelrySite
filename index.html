@@ -12,62 +12,41 @@
     <script src="//maps.googleapis.com/maps/api/js"></script>
     <script>
       var imageSrcs = [
-        //'cross-section.jpg',
+        'jewelry-18.jpg',
+        'jewelry-09.jpg',
+        'jewelry-07.jpg',
+        'ocean.jpg',
+        'jewelry-13.jpg',
+        'jewelry-02.jpg',
+        'jewelry-06.jpg',
+        'materials.jpg',
+        'jewelry-05.jpg',
+        'jewelry-12.jpg',
         'forest.jpg',
         'jewelry-00.jpg',
         'jewelry-01.jpg',
-        'jewelry-02.jpg',
         'jewelry-03.jpg',
         'jewelry-04.jpg',
-        'jewelry-05.jpg',
-        'jewelry-06.jpg',
-        'jewelry-07.jpg',
         'jewelry-08.jpg',
-        'jewelry-09.jpg',
         'jewelry-10.jpg',
         'jewelry-11.jpg',
-        'jewelry-12.jpg',
-        'jewelry-13.jpg',
         'jewelry-14.jpg',
         'jewelry-15.jpg',
         'jewelry-16.jpg',
         'jewelry-17.jpg',
-        'jewelry-18.jpg',
         'jewelry-19.jpg',
-        'materials.jpg',
-        'ocean.jpg'
+        'cross-section.jpg'
       ];
 
-      var imagesLoaded = 0;
       window.preloadedImages = [];
-      
-      function handleImageLoad() {
-        $('.loader .progress .bar').css('width', (100 * ++imagesLoaded / imageSrcs.length) + '%');
-        if (imagesLoaded == imageSrcs.length) {
-          $('.parallax').fadeIn(FAST);
-          $('.loader').fadeOut(FAST);
-        }
-      }
-
       for (var i = 0; i < imageSrcs.length; ++i) {
-        window.preloadedImages.push($('<img>')
-            .load(handleImageLoad)
-            .error(handleImageLoad)
-            .attr('src', '/img/' + imageSrcs[i]));
+        window.preloadedImages.push($('<img>').attr('src', '/img/' + imageSrcs[i])[0]);
       }
     </script>
   </head>
   <body>
     <div class="debugger">
       <label><input type="checkbox"> Debug</label>
-    </div>
-    <div class="loader">
-      <div>
-        <!-- Insert inlined logo here -->
-        <div class="progress">
-          <div class="bar"></div>
-        </div>
-      </div>
     </div>
     <div class="overlay">
       <div class="lightbox">

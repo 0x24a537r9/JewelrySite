@@ -47,40 +47,6 @@ button::-moz-focus-inner {
   z-index: 999;
 }
 
-.loader {
-  background: #fff;
-  height: 100%;
-  left: 0;
-  position: fixed;
-  right: 0;
-  text-align: center;
-  width: 100%;
-  z-index: 200;
-
-  & > div {
-    display: inline-block;
-    font-family: Arial;
-    font-size: 28px;
-    position: relative;
-    text-align: center;
-    top: 45%;
-
-    .progress {
-      border: 1px solid #888;
-      padding: 1px;
-      position: relative;
-      width: 200px;
-
-      .bar {
-        .transition(width @fast @swing);
-        background: #888;
-        height: 5px;
-        width: 0%;
-      }
-    }
-  }
-}
-
 .overlay {
   background: rgba(0, 0, 0, 0.8);
   cursor: pointer;
